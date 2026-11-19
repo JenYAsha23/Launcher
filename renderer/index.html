@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'">
+<title>MC Launcher</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="bg"><i></i><i></i><i></i></div>
+<div class="shell">
+  <nav class="side">
+    <div class="logo">MC</div>
+    <button class="nav on" data-p="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg><span>Играть</span></button>
+    <button class="nav" data-p="mods"><svg viewBox="0 0 24 24"><path d="M4 8l8-4 8 4v8l-8 4-8-4zM4 8l8 4m0 8v-8m8-4l-8 4" fill="none" stroke-width="1.8"/></svg><span>Моды</span></button>
+    <button class="nav" data-p="skin"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.5 3.5-7 8-7s8 2.5 8 7z"/></svg><span>Скин</span></button>
+    <button class="nav" data-p="logs"><svg viewBox="0 0 24 24"><path d="M5 5h14v14H5zM8 9l3 3-3 3m5 0h3" fill="none" stroke-width="1.8"/></svg><span>Лог</span></button>
+    <div class="grow"></div>
+    <div class="muted small">v1.0</div>
+  </nav>
+
+  <div class="content">
+    <!-- ИГРАТЬ -->
+    <section id="p-play" class="page on">
+      <header class="hero">
+        <p class="eyebrow">Готов к запуску</p>
+        <h1 id="heroTitle">Minecraft</h1>
+        <p class="muted" id="heroSub">Выбери версию</p>
+      </header>
+
+      <div class="grid2">
+        <div class="glass vcard">
+          <div class="row"><h3>Версия</h3>
+            <div class="chips" id="filters">
+              <button data-f="release" class="on">Релизы</button>
+              <button data-f="snapshot">Снапшоты</button>
+              <button data-f="old_beta">Beta</button>
+              <button data-f="old_alpha">Alpha</button>
+            </div>
+          </div>
+          <input id="search" placeholder="Поиск: 1.20.1, 1.8.9..." spellcheck="false">
+          <div id="vlist" class="vlist"></div>
+        </div>
+
+        <div class="glass lcard">
+          <label>Ник</label>
+          <input id="nick" maxlength="16" placeholder="Steve" spellcheck="false">
+
+          <label>Загрузчик</label>
+          <div class="seg" id="loaders">
+            <button data-l="vanilla" class="on">Vanilla</button>
+            <button data-l="fabric">Fabric</button>
+            <button data-l="forge">Forge</button>
+          </div>
+
+          <label>Память <b id="ramv">4</b> ГБ</label>
+          <input type="range" id="ram" min="1" max="16" value="4">
+
+          <div class="grow"></div>
+          <div class="bar"><div id="barfill"></div></div>
+          <div id="status" class="muted small">Готов</div>
+          <button id="play" class="primary"><span id="playMain">ИГРАТЬ</span></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- МОДЫ -->
+    <section id="p-mods" class="page">
+      <header class="hero small"><h1>Моды</h1><p class="muted" id="modsFor"></p></header>
+      <div id="drop" class="glass drop">
+        <svg viewBox="0 0 24 24"><path d="M12 16V4m0 0l-4 4m4-4l4 4M4 16v4h16v-4" fill="none" stroke-width="1.8"/></svg>
+        <b>Перетащи .jar файлы сюда</b>
+        <span class="muted">или</span>
+        <div><button id="addmod" class="btn">Выбрать файлы</button> <button id="openfolder" class="btn ghost">Открыть папку</button></div>
+      </div>
+      <ul id="mods" class="modlist"></ul>
+    </section>
+
+    <!-- СКИН -->
+    <section id="p-skin" class="page">
+      <header class="hero small"><h1>Скин</h1><p class="muted">Применяется на Fabric и Forge (CustomSkinLoader ставится сам)</p></header>
+      <div class="glass skinpane">
+        <canvas id="body" width="128" height="256"></canvas>
+        <div class="skinbtns">
+          <button id="pickskin" class="btn">Выбрать скин (.png)</button>
+          <button id="pickcape" class="btn">Выбрать плащ (.png)</button>
+          <button id="clearskin" class="btn ghost">Сбросить</button>
+          <p class="muted small" id="skinnote"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ЛОГ -->
+    <section id="p-logs" class="page">
+      <header class="hero small"><h1>Лог</h1></header>
+      <pre id="log" class="glass"></pre>
+    </section>
+  </div>
+</div>
+<script src="renderer.js"></script>
+</body>
+</html>
